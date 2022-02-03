@@ -196,6 +196,7 @@ namespace UT_Catch2Interface
             Assert.AreEqual(120, settings.StacktraceMaxLength);
             Assert.AreEqual("_", settings.StacktracePointReplacement);
             Assert.AreEqual(20000, settings.TestCaseTimeout);
+            Assert.AreEqual("test", settings.TestCommand);
 
             Assert.IsNotNull(settings.Environment);
             Assert.AreEqual(2, settings.Environment.Count);
@@ -204,7 +205,7 @@ namespace UT_Catch2Interface
 
             Assert.IsFalse(settings.IsVerbosityHigh);
             Assert.IsTrue(settings.UseXmlDiscovery);
-            Assert.IsTrue(settings.HasValidDiscoveryCommandline);
+            Assert.IsTrue(settings.HasValidDiscoveryCommandline);            
         }
 
         [TestMethod]

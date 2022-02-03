@@ -326,7 +326,13 @@ Class :
             var line = reader.ReadLine();
 
             // Check first line
-            if( line == null || !_rgxDefaultFirstLine.IsMatch(line))
+            while (line != null && !_rgxDefaultFirstLine.IsMatch(line))
+            {
+                LogDebug($"skip first line {line}\n");
+                line = reader.ReadLine();
+            }
+
+            if (line == null)
             {
                 return;
             }
@@ -401,11 +407,16 @@ Class :
             var line = reader.ReadLine();
 
             // Check first line
-            if( line == null || !_rgxDefaultFirstLine.IsMatch(line))
+            while (line != null && !_rgxDefaultFirstLine.IsMatch(line))
+            {
+                LogDebug($"skip first line {line}\n");
+                line = reader.ReadLine();
+            }
+
+            if (line == null)
             {
                 return;
             }
-
             line = reader.ReadLine();
 
             // Extract test cases

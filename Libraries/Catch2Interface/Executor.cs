@@ -98,35 +98,35 @@ Class :
 
         public string GenerateCommandlineArguments_Single(string testname, string reportfilename)
         {
-            return $"{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes --out {"\""}{reportfilename}{"\""}";
+            return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes --out {"\""}{reportfilename}{"\""}";
         }
 
         public string GenerateCommandlineArguments_Single_Dbg(string testname)
         {
             if (_settings.DebugBreak)
             {
-                return $"{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes --break";
+                return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes --break";
             }
             else
             {
-                return $"{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes";
+                return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes";
             }
         }
 
         public string GenerateCommandlineArguments_Combined(string caselistfilename, string reportfilename)
         {
-            return $"--reporter xml --durations yes --input-file {"\""}{caselistfilename}{"\""} --out {"\""}{reportfilename}{"\""}";
+            return $"{FormatTestCommand()}--reporter xml --durations yes --input-file {"\""}{caselistfilename}{"\""} --out {"\""}{reportfilename}{"\""}";
         }
 
         public string GenerateCommandlineArguments_Combined_Dbg(string caselistfilename)
         {
             if (_settings.DebugBreak)
             {
-                return $"--reporter xml --durations yes --break --input-file {"\""}{caselistfilename}{"\""}";
+                return $"{FormatTestCommand()}--reporter xml --durations yes --break --input-file {"\""}{caselistfilename}{"\""}";
             }
             else
             {
-                return $"--reporter xml --durations yes --input-file {"\""}{caselistfilename}{"\""}";
+                return $"{FormatTestCommand()}--reporter xml --durations yes --input-file {"\""}{caselistfilename}{"\""}";
             }
         }
 
@@ -188,7 +188,6 @@ Class :
             }
             else
             {
-                process.Close();
 
                 string report = ReadReport(reportfilename);
                 LogDebug(report);
@@ -378,6 +377,17 @@ Class :
             {
                 LogNormal($"Unable to delete file: {filename}");
             }
+        }
+
+        private string FormatTestCommand()
+        {
+            LogNormal("format test command ");
+            LogNormal($"\n{_settings.TestCommand}");
+            if (_settings.TestCommand == "")
+            {
+                return "";
+            }
+            return $"{_settings.TestCommand} ";
         }
 
         #endregion // Private Methods

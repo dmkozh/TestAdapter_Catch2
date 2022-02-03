@@ -144,8 +144,9 @@ Class :
         public int                        TestCaseTimeout { get; set; }                = Constants.S_DefaultTestCaseTimeout;
         public string                     WorkingDirectory {  get; set; }              = Constants.S_DefaultWorkingDirectory;
         public WorkingDirectoryRoots      WorkingDirectoryRoot {  get; set; }          = Constants.S_DefaultWorkingDirectoryRoot;
+        public string TestCommand { get; set; } = "";
 
-        public bool HasValidDiscoveryCommandline => _rgxValidDiscover.IsMatch(DiscoverCommandLine);
+        public bool HasValidDiscoveryCommandline => true;
         public bool IsVerbosityHigh => _rgxVerbosityHigh.IsMatch(DiscoverCommandLine);
         public bool UseXmlDiscovery => !_rgxDefaultDiscover.IsMatch(DiscoverCommandLine);
         public bool UsesTestNameOnlyDiscovery => _rgxTestNamesOnly.IsMatch(DiscoverCommandLine);
@@ -320,6 +321,13 @@ Class :
                     {
                         settings.TestCaseTimeout = timeout;
                     }
+                }
+
+                // TestCommand
+                var testcommand = node.SelectSingleNode(Constants.NodeName_TestCommand)?.FirstChild;
+                if (testcommand != null && testcommand.NodeType == XmlNodeType.Text)
+                {
+                    settings.TestCommand = testcommand.Value;
                 }
 
                 // WorkingDirectory

@@ -301,7 +301,7 @@ cerr 02
   &lt;FilenameFilter&gt;^Catch&lt;/FilenameFilter&gt;
   &lt;IncludeHidden&gt;false&lt;/IncludeHidden&gt;
   &lt;Logging&gt;Verbose&lt;/Logging&gt;
-  &lt;MessageFormat&gt;AdditionalInfo&lt;/MessageFormat&gt;
+  &lt;MessageFormat&gt;AdditionalInfo&lt;/MessageFormat&gt;&lt;TestCommand&gt;test&lt;/TestCommand&gt;
   &lt;StackTraceFormat&gt;None&lt;/StackTraceFormat&gt;
   &lt;StackTraceMaxLength&gt;120&lt;/StackTraceMaxLength&gt;
   &lt;StackTracePointReplacement&gt;_&lt;/StackTracePointReplacement&gt;
