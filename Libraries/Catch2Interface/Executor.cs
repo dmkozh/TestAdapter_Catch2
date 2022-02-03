@@ -142,11 +142,10 @@ Class :
             process.StartInfo.FileName = source;
             process.StartInfo.Arguments = GenerateCommandlineArguments_Single(testname, reportfilename);
             process.StartInfo.CreateNoWindow = true;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = false;
+            process.StartInfo.UseShellExecute = true;
             process.StartInfo.WorkingDirectory = WorkingDirectory(source);
 
-            _settings.AddEnviromentVariables(process.StartInfo.EnvironmentVariables);
 
             LogDebug($"Source for test case: {source}{Environment.NewLine}");
             LogDebug($"Commandline arguments used to run tests case: {process.StartInfo.Arguments}{Environment.NewLine}");
@@ -188,7 +187,7 @@ Class :
             }
             else
             {
-
+                process.Close();
                 string report = ReadReport(reportfilename);
                 LogDebug(report);
 
