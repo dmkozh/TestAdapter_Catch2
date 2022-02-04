@@ -98,35 +98,35 @@ Class :
 
         public string GenerateCommandlineArguments_Single(string testname, string reportfilename)
         {
-            return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes --out {"\""}{reportfilename}{"\""}";
+            return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes --out {"\""}{reportfilename}{"\""} {_settings.TestRunArgs}";
         }
 
         public string GenerateCommandlineArguments_Single_Dbg(string testname)
         {
             if (_settings.DebugBreak)
             {
-                return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes --break";
+                return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes --break {_settings.TestRunArgs}";
             }
             else
             {
-                return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes";
+                return $"{FormatTestCommand()}{GenerateTestnameForCommandline(testname)} --reporter xml --durations yes {_settings.TestRunArgs}";
             }
         }
 
         public string GenerateCommandlineArguments_Combined(string caselistfilename, string reportfilename)
         {
-            return $"{FormatTestCommand()}--reporter xml --durations yes --input-file {"\""}{caselistfilename}{"\""} --out {"\""}{reportfilename}{"\""}";
+            return $"{FormatTestCommand()}--reporter xml --durations yes --input-file {"\""}{caselistfilename}{"\""} --out {"\""}{reportfilename}{"\""} {_settings.TestRunArgs}";
         }
 
         public string GenerateCommandlineArguments_Combined_Dbg(string caselistfilename)
         {
             if (_settings.DebugBreak)
             {
-                return $"{FormatTestCommand()}--reporter xml --durations yes --break --input-file {"\""}{caselistfilename}{"\""}";
+                return $"{FormatTestCommand()}--reporter xml --durations yes --break --input-file {"\""}{caselistfilename}{"\""} {_settings.TestRunArgs}";
             }
             else
             {
-                return $"{FormatTestCommand()}--reporter xml --durations yes --input-file {"\""}{caselistfilename}{"\""}";
+                return $"{FormatTestCommand()}--reporter xml --durations yes --input-file {"\""}{caselistfilename}{"\""} {_settings.TestRunArgs}";
             }
         }
 

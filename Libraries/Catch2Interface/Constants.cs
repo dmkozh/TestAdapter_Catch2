@@ -58,6 +58,7 @@ Class :
         public const string NodeName_StackTracePointReplacement = "StackTracePointReplacement";
         public const string NodeName_TestCaseTimeout = "TestCaseTimeout";
         public const string NodeName_TestCommand = "TestCommand";
+        public const string NodeName_TestRunArgs = "TestRunArgs";
         public const string NodeName_WorkingDirectory = "WorkingDirectory";
         public const string NodeName_WorkingDirectoryRoot = "WorkingDirectoryRoot";
 

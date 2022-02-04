@@ -164,6 +164,8 @@ namespace UT_Catch2Interface
             Assert.AreEqual(80, settings.StacktraceMaxLength);
             Assert.AreEqual(",", settings.StacktracePointReplacement);
             Assert.AreEqual(-1, settings.TestCaseTimeout);
+            Assert.AreEqual("", settings.TestCommand);
+            Assert.AreEqual("", settings.TestRunArgs);
 
             Assert.IsNull(settings.Environment);
 
@@ -197,6 +199,7 @@ namespace UT_Catch2Interface
             Assert.AreEqual("_", settings.StacktracePointReplacement);
             Assert.AreEqual(20000, settings.TestCaseTimeout);
             Assert.AreEqual("test", settings.TestCommand);
+            Assert.AreEqual("--foo", settings.TestRunArgs);
 
             Assert.IsNotNull(settings.Environment);
             Assert.AreEqual(2, settings.Environment.Count);

@@ -145,6 +145,7 @@ Class :
         public string                     WorkingDirectory {  get; set; }              = Constants.S_DefaultWorkingDirectory;
         public WorkingDirectoryRoots      WorkingDirectoryRoot {  get; set; }          = Constants.S_DefaultWorkingDirectoryRoot;
         public string TestCommand { get; set; } = "";
+        public string TestRunArgs { get; set; } = "";
 
         public bool HasValidDiscoveryCommandline => true;
         public bool IsVerbosityHigh => _rgxVerbosityHigh.IsMatch(DiscoverCommandLine);
@@ -328,6 +329,13 @@ Class :
                 if (testcommand != null && testcommand.NodeType == XmlNodeType.Text)
                 {
                     settings.TestCommand = testcommand.Value;
+                }
+
+                // TestRunArgs
+                var testrunargs = node.SelectSingleNode(Constants.NodeName_TestRunArgs)?.FirstChild;
+                if (testrunargs != null && testrunargs.NodeType == XmlNodeType.Text)
+                {
+                    settings.TestRunArgs = testrunargs.Value;
                 }
 
                 // WorkingDirectory
