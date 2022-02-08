@@ -166,6 +166,8 @@ Class :
 
                 _settings.AddEnviromentVariables(process.StartInfo.EnvironmentVariables);
 
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                LogNormal($"Started test process\n");
                 process.Start();
 
                 var output = process.StandardOutput.ReadToEndAsync();
@@ -198,6 +200,9 @@ Class :
                 }
                 else
                 {
+                    watch.Stop();
+
+                    LogNormal($"Discovery process time: {watch.ElapsedMilliseconds} ms\n");
                     if (!string.IsNullOrEmpty(erroroutput.Result))
                     {
                         LogNormal($"  Error Occurred (exit code {process.ExitCode}):{Environment.NewLine}{erroroutput.Result}");

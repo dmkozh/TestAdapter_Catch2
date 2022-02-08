@@ -275,49 +275,7 @@ Class :
 
         private string MakeTestCaseName(List<string> namelines, string source, string filename = null, int linenumber = -1)
         {
-            if(namelines.Count == 1)
-            {
-                return namelines[0];
-            }
-
-            // Concatenate name
-            string name = "";
-            int numoptions = 1 << namelines.Count;
-            for(int i = 0; i < numoptions; ++i)
-            {
-                name = MergeLines(namelines, i, false, 2);
-                if(CheckTestCaseName(source, name, linenumber))
-                {
-                    return name;
-                }
-            }
-
-            for (int i = 0; i < numoptions; ++i)
-            {
-                name = MergeLines(namelines, i, true, 2);
-                if (CheckTestCaseName(source, name, linenumber))
-                {
-                    return name;
-                }
-            }
-
-            // No valid name found
-            if (linenumber < 0)
-            {
-                LogNormal(  $"  Error: Unable to reconstruct long test name{Environment.NewLine}"
-                          + $"    Source: {source}{Environment.NewLine}"
-                          + $"    Name: {MergeLines(namelines)}{Environment.NewLine}");
-            }
-            else
-            {
-                LogNormal(  $"  Error: Unable to reconstruct long test name{Environment.NewLine}"
-                          + $"    Source: {source}{Environment.NewLine}"
-                          + $"    Name: {MergeLines(namelines)}{Environment.NewLine}"
-                          + $"    File: {filename}{Environment.NewLine}"
-                          + $"    Line: {linenumber}{Environment.NewLine}" );
-            }
-
-            return string.Empty;
+            return string.Join(" ", namelines);
         }
 
         private void Process(string output, string source)
