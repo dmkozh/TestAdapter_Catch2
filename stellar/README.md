@@ -15,7 +15,7 @@ probably had some rationale for other projects).
 # Installation
 
 1. Download and install the pre-built `VSTestAdapterCatch2.vsix` extension from
-   this directly or build one from the fork.
+   this directory or build one from the fork.
 
 1. In Visual Studio Test Explorer choose `Configure run settings` from the
    settings menu and pick a `runsettings` file to use. Two examples of such
