@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+    <RunConfiguration>
+        <!-- This is supposed to run tests on all the available cores, but doesn't seem to have any effect for stellar-core. -->
+        <MaxCpuCount>0</MaxCpuCount>
+    </RunConfiguration>
+    <Catch2Adapter>
+        <FilenameFilter>stellar-core</FilenameFilter>
+		<DiscoverCommandLine>test --verbosity high --list-tests</DiscoverCommandLine>
+        <TestCommand>test</TestCommand>
+        <DiscoverTimeout>30000</DiscoverTimeout>
+		<!--Uncomment for more detailed logging-->
+		<!--<Logging>debug</Logging>-->
+    </Catch2Adapter>
+</RunSettings>
