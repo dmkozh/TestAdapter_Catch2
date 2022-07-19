@@ -203,10 +203,10 @@ Class :
                     watch.Stop();
 
                     LogNormal($"Discovery process time: {watch.ElapsedMilliseconds} ms\n");
-                    if (!string.IsNullOrEmpty(erroroutput.Result))
+                    if (process.ExitCode != 0)
                     {
-                        LogNormal($"  Error Occurred (exit code {process.ExitCode}):{Environment.NewLine}{erroroutput.Result}");
-                        LogDebug($"  output:{Environment.NewLine}{output.Result}");
+                        LogNormal($"  Error Occurred (exit code {process.ExitCode}):{erroroutput.Result}");
+                        LogDebug($"  errored process output:{Environment.NewLine}{output.Result}");
                         return string.Empty;
                     }
 
